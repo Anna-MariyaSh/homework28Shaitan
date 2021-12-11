@@ -1,25 +1,26 @@
 /** @format */
 let calculator = {
-	read: function read() {
-		this.a = +prompt("put your first value");
-		this.b = +prompt("put your second value");
+	read: function () {
+		this.a = prompt("put your first value");
+		if (this.a === null || isNaN(+this.a) || this.a.trim() === "") {
+			alert("error in your first value");
+			return this.read();
+		}
+
+		this.b = prompt("put your second value");
+		if (this.b === null || isNaN(+this.b) || this.b.trim() === "") {
+			alert("error in your second value");
+			return this.read();
+		}
 	},
 	sum: function () {
-		if (isNaN(this.a) || isNaN(this.b)) {
-			return "dont true values";
-		} else {
-			return this.a + this.b;
-		}
+		return this.a + this.b;
 	},
 	mul: function () {
-		if (isNaN(this.a) || isNaN(this.b)) {
-			return "dont true values";
-		} else {
-			return this.a * this.b;
-		}
+		return this.a * this.b;
 	},
 };
 
 calculator.read();
-console.log(calculator.sum());
-console.log(calculator.mul());
+alert(calculator.sum());
+alert(calculator.mul());
